@@ -4,10 +4,10 @@ const galleryContainer = document.querySelector('.gallery');
 
 const createGalleryItem = ({ preview, original, description }) => {
   return `<li class="gallery__item">
-            <a class="gallery__link" href="${original}">
-              <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
-            </a>
-          </li>`;
+                <a class="gallery__link" href="${original}">
+                  <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}" />
+                </a>
+              </li>`;
 };
 
 const galleryMarkup = galleryItems.map(createGalleryItem).join('');
@@ -27,8 +27,16 @@ function onGalleryItemClick(event) {
   const largeImageURL = dataset.source;
 
   const instance = basicLightbox.create(`
-    <img src="${largeImageURL}" width="800" height="600">
-  `);
+        <img src="${largeImageURL}" width="800" height="600">
+      `);
+
+  // Додав стилі для центрування модального вікна
+  instance.element().style.cssText = `
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+      `;
 
   instance.show();
 }
