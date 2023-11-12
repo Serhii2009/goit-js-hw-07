@@ -38,5 +38,9 @@ function onGalleryItemClick(event) {
         transform: translate(-50%, -50%);
       `;
 
+  instance.element().addEventListener('click', () => {
+    instance.close();
+  });
+
   instance.show();
 }
