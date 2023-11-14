@@ -15,9 +15,9 @@ function galleryList(arr) {
       ({ preview, original, description }) =>
         `
     <li class="gallery__item">
-      <a class="gallery__link" href="${original}">
-        <img class="gallery__image" src="${preview}" alt="${description}">
-      </a>
+    <a class="gallery__link" href="${original}">
+    <img class="gallery__image" src="${preview}" alt="${description}">
+    </a>
     </li>
     `
     )
@@ -40,12 +40,15 @@ function handleClick(event) {
 
     gallery.on('show.simplelightbox', function () {
       const currentImage = gallery.currentImage;
-      const currentIndex = galleryItems.findIndex(
-        item => item.original === currentImage.src
-      );
-      const { original, description } = galleryItems[currentIndex];
-      const imageHtml = `<img class="gallery__image" src="${original}" alt="${description}">`;
-      document.querySelector('.sl-image').innerHTML = imageHtml;
+      const currentIndex = currentImage
+        ? galleryItems.findIndex(item => item.original === currentImage.src)
+        : -1;
+
+      if (currentIndex !== -1) {
+        const { original, description } = galleryItems[currentIndex];
+        const imageHtml = `<img class="gallery__image" src="${original}" alt="${description}">`;
+        document.querySelector('.sl-image').innerHTML = imageHtml;
+      }
     });
   }
 }
