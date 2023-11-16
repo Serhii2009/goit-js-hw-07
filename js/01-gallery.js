@@ -27,20 +27,8 @@ function onGalleryItemClick(event) {
   const largeImageURL = dataset.source;
 
   const instance = basicLightbox.create(`
-        <img src="${largeImageURL}" width="800" height="600">
+        <img src="${largeImageURL}">
       `);
-
-  // Додав стилі для центрування модального вікна
-  instance.element().style.cssText = `
-          position: fixed;
-          top: 50%;
-          left: 50%;
-          transform: translate(-50%, -50%);
-        `;
-
-  // instance.element().addEventListener('click', () => {
-  //   instance.close();
-  // });
 
   instance.show();
 }
