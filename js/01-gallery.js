@@ -27,7 +27,7 @@ function onGalleryItemClick(event) {
   const largeImageURL = dataset.source;
 
   const instance = basicLightbox.create(`
-        <img src="${largeImageURL}">
+        <img src="${largeImageURL}" alt="big-photo">
       `);
 
   instance.show();
